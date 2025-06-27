@@ -13,4 +13,9 @@ class Prato extends Model
         'codigo',
         'nome'
     ];
+
+    public function cardapios()
+    {
+        return $this->belongsToMany(Cardapio::class, 'cardapio_prato');
+    }
 }

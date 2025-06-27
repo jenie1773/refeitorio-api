@@ -13,4 +13,14 @@ class CardapioPrato extends Model
         'cardapio_id',
         'prato_id',
     ];
+
+    public function cardapio()
+    {
+        return $this->belongsTo(Cardapio::class);
+    }
+
+    public function prato()
+    {
+        return $this->belongsTo(Prato::class);
+    }
 }

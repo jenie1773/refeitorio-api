@@ -14,4 +14,9 @@ class Cardapio extends Model
         'data_cardapio',
         'tipo_cardapio'
     ];
+
+    public function pratos()
+    {
+        return $this->belongsToMany(Prato::class, 'cardapio_prato');
+    }
 }

@@ -27,10 +27,17 @@ class CardapioController extends Controller
         $validated = $request->validate([
             'codigo' => 'integer',
             'data_cardapio' => 'required|date',
-            'tipo_cardapio' => 'required|integer'
+            'tipo_cardapio' => 'required|integer',
+            'pratos' => 'array',
+            'pratos.*' => 'integer|exists:pratos,id'
         ]);
 
         $cardapio = Cardapio::create($validated);
+
+        if (!empty($validated['pratos'])) {
+            $cardapio->pratos()->attach($validated['pratos']);
+        }  
+
         return response()->json($cardapio, 201);
     }
 
@@ -44,10 +51,17 @@ class CardapioController extends Controller
         $validated = $request->validate([
             'codigo' => 'integer',
             'data_cardapio' => 'required|date',
-            'tipo_cardapio' => 'required|integer'
+            'tipo_cardapio' => 'required|integer',
+            'pratos' => 'array',
+            'pratos.*' => 'integer|exists:pratos,id'
         ]);
 
         $cardapio->update($validated);
+
+        if (isset($validated['pratos'])) {            
+            $cardapio->pratos()->sync($validated['pratos']);
+        }
+
         return response()->json($cardapio);
     }
 
@@ -61,4 +75,5 @@ class CardapioController extends Controller
         $cardapio->delete();
         return response()->json(['message' => 'Cardapio deletado com sucesso']);
     }
+
 }
