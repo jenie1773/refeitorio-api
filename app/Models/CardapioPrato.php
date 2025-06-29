@@ -9,6 +9,8 @@ class CardapioPrato extends Model
 {
     use HasFactory;
 
+    protected $table = "cardapio_prato";
+
     protected $fillable = [
         'cardapio_id',
         'prato_id',

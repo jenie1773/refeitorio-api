@@ -29,5 +29,5 @@ Route::delete('/cardapio/{id}', [CardapioController::class, 'destroy']);
 Route::get('/prato', [PratoController::class, 'index']);
 Route::get('/prato/{id}', [PratoController::class,'show']);
 Route::post('/prato', [PratoController::class, 'store']);
-Route::put('/pratp/{id}', [PratoController::class,'update']);
+Route::put('/prato/{id}', [PratoController::class,'update']);
 Route::delete('/prato/{id}', [PratoController::class,'destroy']);

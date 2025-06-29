@@ -9,6 +9,8 @@ class Prato extends Model
 {
     use HasFactory;
 
+    protected $table = "prato";
+
     protected $fillable = [
         'codigo',
         'nome'
